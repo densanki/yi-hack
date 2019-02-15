@@ -162,7 +162,7 @@ printf "done!\n\n"
 
 # fix the files ownership
 printf "Fixing the files ownership... "
-chown -R root:root "$TMP_DIR/*"
+chown -R root:root "$TMP_DIR/"
 printf "done!\n\n"
 
 # Compress a couple of the yi app files
