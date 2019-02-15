@@ -1,7 +1,7 @@
 Ubuntu 18.04 LTS 64Bit
 
 Local Build
-sudo apt install build-essential autoconf p7zip p7zip-full p7zip-rar libxml2-utils yui-compressor 
+sudo apt install build-essential autoconf p7zip p7zip-full p7zip-rar libxml2-utils yui-compressor mtd-utils
 
 Hi SDK & Drivers Dependencies
 sudo apt install build-essential lib32z1 lib32stdc++6-4.8-dbg u-boot-tools zlib1g-dev libncurses5-dev libncursesw5-dev uuid-dev
