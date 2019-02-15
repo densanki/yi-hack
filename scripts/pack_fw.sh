@@ -125,7 +125,7 @@ else
 fi
 
 printf "Creating the out directory... "
-mkdir -p $OUT_DIR
+mkdir -p "$OUT_DIR"
 printf "%s created!\n\n" $OUT_DIR
 
 printf "Creating the tmp directory... "
@@ -134,8 +134,8 @@ printf "%s created!\n\n" $TMP_DIR
 
 # Copy the sysroot to the tmp dir
 printf "Copying the sysroot contents... "
-rsync -a $SYSROOT_DIR/rootfs/* $TMP_DIR/rootfs || exit 1
-rsync -a $SYSROOT_DIR/home/* $TMP_DIR/home || exit 1
+rsync -a "$SYSROOT_DIR/rootfs/" "$TMP_DIR/rootfs" || exit 1
+rsync -a "$SYSROOT_DIR/home/" "$TMP_DIR/home" || exit 1
 printf "done!\n"
 
 # Copy the static files to the tmp dir
@@ -146,23 +146,23 @@ printf "done!\n"
 
 # Copy the build files to the tmp dir
 printf "Copying the build files... "
-rsync -a $BUILD_DIR/rootfs/* $TMP_DIR/rootfs || exit 1
-rsync -a $BUILD_DIR/home/* $TMP_DIR/home || exit 1
+rsync -a "$BUILD_DIR/rootfs/" "$TMP_DIR/rootfs" || exit 1
+rsync -a "$BUILD_DIR/home/" "$TMP_DIR/home" || exit 1
 printf "done!\n"
 
 # insert the version file
 printf "Copying the version file... "
-cp $BASE_DIR/VERSION $TMP_DIR/home/yi-hack-v4/version
+cp "$BASE_DIR/VERSION" "$TMP_DIR/home/yi-hack-v4/version"
 printf "done!\n\n"
 
 # insert the camera version file
 printf "Creating the .camver file... "
-echo $CAMERA_NAME > $TMP_DIR/home/app/.camver
+echo $CAMERA_NAME > "$TMP_DIR/home/app/.camver"
 printf "done!\n\n"
 
 # fix the files ownership
 printf "Fixing the files ownership... "
-chown -R root:root $TMP_DIR/*
+chown -R root:root "$TMP_DIR/*"
 printf "done!\n\n"
 
 # Compress a couple of the yi app files
@@ -173,12 +173,12 @@ compress_file "$TMP_DIR/home/app" rmm
 
 # Compress the yi-hack-v4 folder
 printf "Compressing yi-hack-v4... "
-7za a $TMP_DIR/home/yi-hack-v4/yi-hack-v4.7z $TMP_DIR/home/yi-hack-v4/* > /dev/null
+7za a "$TMP_DIR/home/yi-hack-v4/yi-hack-v4.7z" "$TMP_DIR/home/yi-hack-v4/*" > /dev/null
 
 # Delete all the compressed files except system_init.sh and yi-hack-v4.7z
-find $TMP_DIR/home/yi-hack-v4/script/ -maxdepth 0 ! -name 'system_init.sh' -type f -exec rm -f {} +
-find $TMP_DIR/home/yi-hack-v4/* -maxdepth 0 -type d ! -name 'script' -exec rm -rf {} +
-find $TMP_DIR/home/yi-hack-v4/* -maxdepth 0 -type f -not -name 'yi-hack-v4.7z' -exec rm {} +
+find "$TMP_DIR/home/yi-hack-v4/script/" -maxdepth 0 ! -name 'system_init.sh' -type f -exec rm -f {} +
+find "$TMP_DIR/home/yi-hack-v4/*" -maxdepth 0 -type d ! -name 'script' -exec rm -rf {} +
+find "$TMP_DIR/home/yi-hack-v4/*" -maxdepth 0 -type f -not -name 'yi-hack-v4.7z' -exec rm {} +
 printf "done!\n\n"
 
 # home 
@@ -189,7 +189,7 @@ pack_image "rootfs" $CAMERA_ID $TMP_DIR $OUT_DIR
 
 # Cleanup
 printf "Cleaning up the tmp folder... "
-rm -rf $TMP_DIR
+rm -rf "$TMP_DIR"
 printf "done!\n\n"
 
 echo "------------------------------------------------------------------------"
