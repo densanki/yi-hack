@@ -35,9 +35,8 @@ create_sysroot_dir()
 
     local SYSROOT_DIR=$SYSROOT_BASE_DIR/$CAMERA_NAME
     if [[ -d $SYSROOT_DIR/home && -d $SYSROOT_DIR/rootfs ]]; then
-        echo "ERROR: The $CAMERA_NAME sysroot folder already exists. Exiting."
+        echo "WARNING: The $CAMERA_NAME sysroot folder already exists."
         echo ""
-        exit 1
     fi
     
     echo "Creating the sysroot dirs.."
@@ -53,20 +52,35 @@ jffs2_mount()
     local JFFS2_MOUNT=$2
     
     # cleanup if necessary
-    umount /dev/mtdblock0 &>/dev/null
+    umount -f /dev/mtdblock0 &>/dev/null
+
     modprobe -r mtdram >/dev/null
     modprobe -r mtdblock >/dev/null
 
     modprobe mtdram total_size=32768 erase_size=64 || exit 1
     modprobe mtdblock || exit 1
+
     dd if="$JFFS2_FILE" of=/dev/mtdblock0 &>/dev/null || exit 1
+
+    sleep 5
+
     mount -t jffs2 /dev/mtdblock0 "$JFFS2_MOUNT" || exit 1
+
+    sleep 5
+
+    if [ "$(ls -A "$JFFS2_MOUNT")" ]; then
+        echo "Temp dir is not empty"
+    else
+        echo "Fail: Temp dir is empty"
+        exit 1
+    fi
+
 }
 
 jffs2_umount()
 {
     local JFFS2_MOUNT=$1
-    umount $JFFS2_MOUNT
+    umount -f "$JFFS2_MOUNT"
     umount /dev/mtdblock0 &>/dev/null
 }
 
@@ -81,11 +95,17 @@ jffs2_copy()
         echo "ERROR: Could not create temp dir \"$TMP_DIR\". Exiting."
         exit 1
     fi
-    
-    jffs2_mount $JFFS2_FILE $TMP_DIR
-    rsync -a $TMP_DIR/* $DEST_DIR
-    jffs2_umount $TMP_DIR
-    
+
+    echo "mount file to tmp dir"
+    jffs2_mount "$JFFS2_FILE" "$TMP_DIR"
+
+    echo "copy the tmp dir to sysroot"
+    rsync -a "$TMP_DIR/" "$DEST_DIR"
+
+    echo "unmount tmp dir"
+    jffs2_umount "$TMP_DIR"
+
+    echo "cleanup temp dir"
     rm -rf "$TMP_DIR"
 }
 
