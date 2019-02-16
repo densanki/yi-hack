@@ -174,8 +174,10 @@ compress_file "$TMP_DIR/home/app" rmm
 # Compress the yi-hack-v4 folder
 printf "Compressing yi-hack-v4... "
 7za a "$TMP_DIR/home/yi-hack-v4/yi-hack-v4.7z" "$TMP_DIR/home/yi-hack-v4/*" > /dev/null
+printf "done!\n\n"
 
 # Delete all the compressed files except system_init.sh and yi-hack-v4.7z
+printf "Cleanup yi-hack-v4..."
 find "$TMP_DIR/home/yi-hack-v4/script/" -maxdepth 0 ! -name 'system_init.sh' -type f -exec rm -f {} +
 find "$TMP_DIR/home/yi-hack-v4/*" -maxdepth 0 -type d ! -name 'script' -exec rm -rf {} +
 find "$TMP_DIR/home/yi-hack-v4/*" -maxdepth 0 -type f -not -name 'yi-hack-v4.7z' -exec rm {} +
