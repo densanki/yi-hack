@@ -1,3 +1,5 @@
+# Needed packages to build this project
+
 ## Ubuntu 18.04 LTS 64Bit
 
 ### Local Build
@@ -12,7 +14,5 @@ If this is not corrected the css and js is missing on the camera frontend
 
 ### Hi SDK & Drivers Dependencies
 ```
-sudo apt install build-essential lib32z1 lib32stdc++6-4.8-dbg u-boot-tools zlib1g-dev libncurses5-dev libncursesw5-dev uuid-dev
+sudo apt install lib32z1 lib32stdc++6-4.8-dbg u-boot-tools zlib1g-dev libncurses5-dev libncursesw5-dev uuid-dev
 ```
-Download this file for patch
-http://nl.archive.ubuntu.com/ubuntu/pool/universe/m/mtd-utils/mtd-utils_1.5.2.orig.tar.bz2
