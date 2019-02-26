@@ -6,6 +6,7 @@
 !/stock_firmware/README.md
 
 /stock_firmware/common/*
+!/stock_firmware/common/pub_key
 !/stock_firmware/common/README.md
 
 /sysroot/*
