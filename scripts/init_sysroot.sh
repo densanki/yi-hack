@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-#  This file is part of yi-hack-v4 (https://github.com/TheCrypt0/yi-hack-v4).
+#  This file is part of yi-hack (https://github.com/densanki/yi-hack).
 #  Copyright (c) 2018-2019 Davide Maggioni.
 # 
 #  This program is free software: you can redistribute it and/or modify
@@ -298,7 +298,7 @@ FIRMWARE_DIR=$(normalize_path $(get_script_dir)/../stock_firmware)/$CAMERA_NAME
 
 echo ""
 echo "------------------------------------------------------------------------"
-echo " YI-HACK-V4 - INIT SYSROOT"
+echo " YI-HACK - INIT SYSROOT"
 echo "------------------------------------------------------------------------"
 printf " camera_name      : %s\n" $CAMERA_NAME
 printf " camera_id        : %s\n" $CAMERA_ID

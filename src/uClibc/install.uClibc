@@ -3,12 +3,12 @@
 SCRIPT_DIR=$(cd `dirname $0` && pwd)
 cd $SCRIPT_DIR
 
-mkdir -p ../../build/home/yi-hack-v4/lib/
+mkdir -p ../../build/home/yi-hack/lib/
 
-rsync -a ./_install/lib/libcrypt* ../../build/home/yi-hack-v4/lib/
-rsync -a ./_install/lib/libnsl* ../../build/home/yi-hack-v4/lib/
-rsync -a ./_install/lib/libutil* ../../build/home/yi-hack-v4/lib/
-rsync -a ./_install/lib/libutil* ../../build/home/yi-hack-v4/lib/
+rsync -a ./_install/lib/libcrypt* ../../build/home/yi-hack/lib/
+rsync -a ./_install/lib/libnsl* ../../build/home/yi-hack/lib/
+rsync -a ./_install/lib/libutil* ../../build/home/yi-hack/lib/
+rsync -a ./_install/lib/libutil* ../../build/home/yi-hack/lib/
 
 mkdir -p ../../build/rootfs/lib/
 
@@ -17,8 +17,8 @@ rsync -a ./_install/lib/libc.so.0 ../../build/rootfs/lib/
 rsync -a ./_install/lib/ld-uClibc* ../../build/rootfs/lib/
 rsync -a ./_install/lib/libm* ../../build/rootfs/lib/
 
-ln -fs /home/yi-hack-v4/lib/libutil-0.9.33.2.so ../../build/rootfs/lib/libutil-0.9.33.2.so
+ln -fs /home/yi-hack/lib/libutil-0.9.33.2.so ../../build/rootfs/lib/libutil-0.9.33.2.so
 ln -fs libutil-0.9.33.2.so ../../build/rootfs/lib/libutil.so.0
 
-ln -fs /home/yi-hack-v4/lib/libcrypt-0.9.33.2.so ../../build/rootfs/lib/libcrypt-0.9.33.2.so
+ln -fs /home/yi-hack/lib/libcrypt-0.9.33.2.so ../../build/rootfs/lib/libcrypt-0.9.33.2.so
 ln -fs libcrypt-0.9.33.2.so ../../build/rootfs/lib/libcrypt.so.0

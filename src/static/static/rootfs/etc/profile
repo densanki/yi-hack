@@ -7,8 +7,8 @@ set_path_before()
 	[ -d $1 ] && PATH="$1:$PATH"
 }
 
-PATH="/usr/bin:/usr/sbin:/bin:/sbin:/home/base/tools:/home/app/localbin:/home/base:/home/yi-hack-v4/bin:/home/yi-hack-v4/sbin:/tmp/sd/yi-hack-v4/bin:/tmp/sd/yi-hack-v4/sbin"
-LD_LIBRARY_PATH="/usr/local/lib:/usr/lib:/home/lib:/home/hisiko/hisilib:/home/app/locallib:/home/yi-hack-v4/lib:/tmp/sd/yi-hack-v4/lib"
+PATH="/usr/bin:/usr/sbin:/bin:/sbin:/home/base/tools:/home/app/localbin:/home/base:/home/yi-hack/bin:/home/yi-hack/sbin:/tmp/sd/yi-hack/bin:/tmp/sd/yi-hack/sbin"
+LD_LIBRARY_PATH="/usr/local/lib:/usr/lib:/home/lib:/home/hisiko/hisilib:/home/app/locallib:/home/yi-hack/lib:/tmp/sd/yi-hack/lib"
 
 set_path_before /usr/local/sbin
 set_path_before /usr/local/bin
@@ -30,22 +30,22 @@ WHITE="[1;37m"
 
 umask 022
 
-alias crontab="crontab -c /home/yi-hack-v4/etc/crontabs"
+alias crontab="crontab -c /home/yi-hack/etc/crontabs"
 
-HACK_VERSION=$(cat /home/yi-hack-v4/version)
+HACK_VERSION=$(cat /home/yi-hack/version)
 HACK_NEW_VERSION=$(cat /tmp/hacknewver 2>/dev/null)
 
 ###############################################################################
 
 echo ""
 
-echo "      _     _           _           ___ "
-echo "  _ _|_|___| |_ ___ ___| |_ ___ _ _| | |"
-echo " | | | |___|   | .'|  _| '_|___| | |_  |"
-echo " |_  |_|   |_|_|__,|___|_,_|    \_/  |_|"
+echo "      _     _           _   "
+echo "  _ _|_|___| |_ ___ ___| |_ "
+echo " | | | |___|   | .'|  _| '_|"
+echo " |_  |_|   |_|_|__,|___|_,_|"
 echo " |___|"
 echo " -----------------------------------------------------"
-echo "  yi-hack-v4 - $HACK_VERSION"
+echo "  yi-hack - $HACK_VERSION"
 echo " -----------------------------------------------------"
 
 if [[ -z $HACK_NEW_VERSION ]] ; then
@@ -60,7 +60,7 @@ else
         echo " UPDATE: Version $HACK_NEW_VERSION is available."
         echo ""
         echo " You can download it from GitHub:"
-        echo " > https://github.com/TheCrypt0/yi-hack-v4/releases"
+        echo " > https://github.com/densanki/yi-hack/releases"
         echo " -----------------------------------------------------"
     fi
 fi

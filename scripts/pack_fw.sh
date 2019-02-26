@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-#  This file is part of yi-hack-v4 (https://github.com/TheCrypt0/yi-hack-v4).
+#  This file is part of yi-hack (https://github.com/densanki/yi-hack).
 #  Copyright (c) 2018-2019 Davide Maggioni.
 # 
 #  This program is free software: you can redistribute it and/or modify
@@ -93,7 +93,7 @@ OUT_DIR=$BASE_DIR/out/$CAMERA_NAME
 
 echo ""
 echo "------------------------------------------------------------------------"
-echo " YI-HACK-V4 - FIRMWARE PACKER"
+echo " YI-HACK - FIRMWARE PACKER"
 echo "------------------------------------------------------------------------"
 printf " camera_name      : %s\n" $CAMERA_NAME
 printf " camera_id        : %s\n" $CAMERA_ID
@@ -165,7 +165,7 @@ printf "done!\n"
 
 # insert the version file
 printf "Copying the version file... "
-cp "$BASE_DIR/VERSION" "$TMP_DIR/home/yi-hack-v4/version"
+cp "$BASE_DIR/VERSION" "$TMP_DIR/home/yi-hack/version"
 printf "done!\n\n"
 
 # insert the camera version file
@@ -184,16 +184,16 @@ compress_file "$TMP_DIR/home/app" oss
 compress_file "$TMP_DIR/home/app" p2p_tnp
 compress_file "$TMP_DIR/home/app" rmm
 
-# Compress the yi-hack-v4 folder
-printf "Compressing yi-hack-v4... "
-7za a "$TMP_DIR/home/yi-hack-v4/yi-hack-v4.7z" "$TMP_DIR/home/yi-hack-v4/*" > /dev/null
+# Compress the yi-hack folder
+printf "Compressing yi-hack... "
+7za a "$TMP_DIR/home/yi-hack/yi-hack.7z" "$TMP_DIR/home/yi-hack/*" > /dev/null
 printf "done!\n\n"
 
-# Delete all the compressed files except system_init.sh and yi-hack-v4.7z
-printf "Cleanup yi-hack-v4..."
-find "$TMP_DIR/home/yi-hack-v4/script/" -maxdepth 0 ! -name 'system_init.sh' -type f -exec rm -f {} +
-find "$TMP_DIR/home/yi-hack-v4/*" -maxdepth 0 -type d ! -name 'script' -exec rm -rf {} +
-find "$TMP_DIR/home/yi-hack-v4/*" -maxdepth 0 -type f -not -name 'yi-hack-v4.7z' -exec rm {} +
+# Delete all the compressed files except system_init.sh and yi-hack.7z
+printf "Cleanup yi-hack..."
+find "$TMP_DIR/home/yi-hack/script/" -maxdepth 0 ! -name 'system_init.sh' -type f -exec rm -f {} +
+find "$TMP_DIR/home/yi-hack/*" -maxdepth 0 -type d ! -name 'script' -exec rm -rf {} +
+find "$TMP_DIR/home/yi-hack/*" -maxdepth 0 -type f -not -name 'yi-hack.7z' -exec rm {} +
 printf "done!\n\n"
 
 # home 

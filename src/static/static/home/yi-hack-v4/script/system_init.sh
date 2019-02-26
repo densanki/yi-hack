@@ -1,21 +1,21 @@
 #!/bin/sh
 
-if [ -d "/usr/yi-hack-v4" ]; then
-    YI_HACK_V4_PREFIX="/usr"
+if [ -d "/usr/yi-hack" ]; then
+    YI_HACK_PREFIX="/usr"
     YI_PREFIX="/home"
     UDHCPC_SCRIPT_DEST="/home/default.script"
-elif [ -d "/home/yi-hack-v4" ]; then
-    YI_HACK_V4_PREFIX="/home"
+elif [ -d "/home/yi-hack" ]; then
+    YI_HACK_PREFIX="/home"
     YI_PREFIX="/home/app"
     UDHCPC_SCRIPT_DEST="/home/app/script/default.script"
 fi
 
-ARCHIVE_FILE="$YI_HACK_V4_PREFIX/yi-hack-v4/yi-hack-v4.7z"
-DESTDIR="$YI_HACK_V4_PREFIX/yi-hack-v4"
+ARCHIVE_FILE="$YI_HACK_PREFIX/yi-hack/yi-hack.7z"
+DESTDIR="$YI_HACK_PREFIX/yi-hack"
 
 DHCP_SCRIPT_DEST="/home/app/script/wifidhcp.sh"
-UDHCP_SCRIPT="$YI_HACK_V4_PREFIX/yi-hack-v4/script/default.script"
-DHCP_SCRIPT="$YI_HACK_V4_PREFIX/yi-hack-v4/script/wifidhcp.sh"
+UDHCP_SCRIPT="$YI_HACK_PREFIX/yi-hack/script/default.script"
+DHCP_SCRIPT="$YI_HACK_PREFIX/yi-hack/script/wifidhcp.sh"
 
 files=`find $YI_PREFIX -maxdepth 1 -name "*.7z"`
 if [ ${#files[@]} -gt 0 ]; then
@@ -30,7 +30,7 @@ fi
 
 if [ ! -f $YI_PREFIX/cloudAPI_real ]; then
 	mv $YI_PREFIX/cloudAPI $YI_PREFIX/cloudAPI_real
-	cp $YI_HACK_V4_PREFIX/yi-hack-v4/script/cloudAPI $YI_PREFIX/
+	cp $YI_HACK_PREFIX/yi-hack/script/cloudAPI $YI_PREFIX/
         rm $UDHCPC_SCRIPT_DEST
         cp $UDHCP_SCRIPT $UDHCPC_SCRIPT_DEST
 	if [ -f $DHCP_SCRIPT_DEST ]; then
@@ -39,5 +39,5 @@ if [ ! -f $YI_PREFIX/cloudAPI_real ]; then
 	fi
 fi
 
-mkdir -p $YI_HACK_V4_PREFIX/yi-hack-v4/etc/crontabs
-mkdir -p $YI_HACK_V4_PREFIX/yi-hack-v4/etc/dropbear
+mkdir -p $YI_HACK_PREFIX/yi-hack/etc/crontabs
+mkdir -p $YI_HACK_PREFIX/yi-hack/etc/dropbear

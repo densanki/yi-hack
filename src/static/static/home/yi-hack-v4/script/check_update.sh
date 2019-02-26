@@ -2,10 +2,10 @@
 
 CONF_FILE="etc/system.conf"
 
-if [ -d "/usr/yi-hack-v4" ]; then
-        YI_HACK_PREFIX="/usr/yi-hack-v4"
-elif [ -d "/home/yi-hack-v4" ]; then
-        YI_HACK_PREFIX="/home/yi-hack-v4"
+if [ -d "/usr/yi-hack" ]; then
+        YI_HACK_PREFIX="/usr/yi-hack"
+elif [ -d "/home/yi-hack" ]; then
+        YI_HACK_PREFIX="/home/yi-hack"
 fi
 
 get_config()
@@ -17,7 +17,7 @@ get_config()
 MAX_RETRY=10
 N_RETRY=0
 
-REMOTE_VERSION_URL=https://raw.githubusercontent.com/TheCrypt0/yi-hack-v4/master/VERSION
+REMOTE_VERSION_URL=https://raw.githubusercontent.com/densanki/yi-hack/master/VERSION
 REMOTE_VERSION_FILE=/tmp/hacknewver
 
 if [[ $(get_config CHECK_UPDATES) == "yes" ]] ; then

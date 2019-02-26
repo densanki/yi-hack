@@ -2,10 +2,10 @@
 
 CONF_FILE="etc/system.conf"
 
-if [ -d "/usr/yi-hack-v4" ]; then
-        YI_HACK_PREFIX="/usr/yi-hack-v4"
-elif [ -d "/home/yi-hack-v4" ]; then
-        YI_HACK_PREFIX="/home/yi-hack-v4"
+if [ -d "/usr/yi-hack" ]; then
+        YI_HACK_PREFIX="/usr/yi-hack"
+elif [ -d "/home/yi-hack" ]; then
+        YI_HACK_PREFIX="/home/yi-hack"
 fi
 
 get_config()
@@ -14,12 +14,12 @@ get_config()
     grep $1 $YI_HACK_PREFIX/$CONF_FILE | cut -d "=" -f2
 }
 
-if [ -d "/usr/yi-hack-v4" ]; then
-	export LD_LIBRARY_PATH=/home/libusr:$LD_LIBRARY_PATH:/usr/yi-hack-v4/lib:/home/hd1/yi-hack-v4/lib
-	export PATH=$PATH:/usr/yi-hack-v4/bin:/usr/yi-hack-v4/sbin:/home/hd1/yi-hack-v4/bin:/home/hd1/yi-hack-v4/sbin
-elif [ -d "/home/yi-hack-v4" ]; then
-	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/lib:/home/yi-hack-v4/lib:/tmp/sd/yi-hack-v4/lib
-	export PATH=$PATH:/home/base/tools:/home/yi-hack-v4/bin:/home/yi-hack-v4/sbin:/tmp/sd/yi-hack-v4/bin:/tmp/sd/yi-hack-v4/sbin
+if [ -d "/usr/yi-hack" ]; then
+	export LD_LIBRARY_PATH=/home/libusr:$LD_LIBRARY_PATH:/usr/yi-hack/lib:/home/hd1/yi-hack/lib
+	export PATH=$PATH:/usr/yi-hack/bin:/usr/yi-hack/sbin:/home/hd1/yi-hack/bin:/home/hd1/yi-hack/sbin
+elif [ -d "/home/yi-hack" ]; then
+	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/lib:/home/yi-hack/lib:/tmp/sd/yi-hack/lib
+	export PATH=$PATH:/home/base/tools:/home/yi-hack/bin:/home/yi-hack/sbin:/tmp/sd/yi-hack/bin:/tmp/sd/yi-hack/sbin
 fi
 
 hostname -F /etc/hostname
@@ -45,8 +45,8 @@ $YI_HACK_PREFIX/script/check_update.sh
 
 crond -c $YI_HACK_PREFIX/etc/crontabs
 
-if [ -f "/tmp/sd/yi-hack-v4/startup.sh" ]; then
-    /tmp/sd/yi-hack-v4/startup.sh
-elif [ -f "/home/hd1/yi-hack-v4/startup.sh" ]; then
-    /home/hd1/yi-hack-v4/startup.sh
+if [ -f "/tmp/sd/yi-hack/startup.sh" ]; then
+    /tmp/sd/yi-hack/startup.sh
+elif [ -f "/home/hd1/yi-hack/startup.sh" ]; then
+    /home/hd1/yi-hack/startup.sh
 fi

@@ -6,19 +6,19 @@ cd $SCRIPT_DIR
 # Compress the file
 # upx ./_install/*
 
-mkdir -p ../../build/home/yi-hack-v4/bin/
+mkdir -p ../../build/home/yi-hack/bin/
 mkdir -p ../../build/rootfs/bin/
 mkdir -p ../../build/rootfs/sbin/
 
 arm-hisiv300-linux-strip ./_install/dropbearmulti
-rsync -a ./_install/dropbearmulti ../../build/home/yi-hack-v4/bin/
+rsync -a ./_install/dropbearmulti ../../build/home/yi-hack/bin/
 
-ln -fs /home/yi-hack-v4/bin/dropbearmulti ../../build/rootfs/bin/dbclient
-ln -fs /home/yi-hack-v4/bin/dropbearmulti ../../build/rootfs/bin/dropbearconvert
-ln -fs /home/yi-hack-v4/bin/dropbearmulti ../../build/rootfs/bin/dropbearkey
-ln -fs /home/yi-hack-v4/bin/dropbearmulti ../../build/rootfs/bin/scp
+ln -fs /home/yi-hack/bin/dropbearmulti ../../build/rootfs/bin/dbclient
+ln -fs /home/yi-hack/bin/dropbearmulti ../../build/rootfs/bin/dropbearconvert
+ln -fs /home/yi-hack/bin/dropbearmulti ../../build/rootfs/bin/dropbearkey
+ln -fs /home/yi-hack/bin/dropbearmulti ../../build/rootfs/bin/scp
 ln -fs dbclient ../../build/rootfs/bin/ssh
 
 ln -fs /bin/dbclient ../../build/rootfs/usr/bin/dbclient
 
-ln -fs /home/yi-hack-v4/bin/dropbearmulti ../../build/rootfs/sbin/dropbear
+ln -fs /home/yi-hack/bin/dropbearmulti ../../build/rootfs/sbin/dropbear
