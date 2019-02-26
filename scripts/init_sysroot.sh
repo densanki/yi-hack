@@ -130,13 +130,13 @@ extract_stock_fw()
     
     # copy the stock firmware images contents to the sysroot
     
-    printf "Extracting \"home_$CAMERA_ID\" image to \"$FIRMWARE_HOME_DESTDIR\"... "
+    printf "Extracting \"home_$CAMERA_ID\" image to \"$FIRMWARE_HOME_DESTDIR\"... \n"
     dd bs=64 skip=1 if="$FIRMWARE_HOME" of="$FIRMWARE_HOME.jffs2.tmp" &> /dev/null || exit 1
     jffs2_copy $FIRMWARE_HOME.jffs2.tmp $FIRMWARE_HOME_DESTDIR
     rm -rf $FIRMWARE_HOME.jffs2.tmp
     echo "done!"
     
-    printf "Extracting \"rootfs_$CAMERA_ID\" image to \"$FIRMWARE_ROOTFS_DESTDIR\"... "
+    printf "Extracting \"rootfs_$CAMERA_ID\" image to \"$FIRMWARE_ROOTFS_DESTDIR\"... \n"
     dd bs=64 skip=1 if="$FIRMWARE_ROOTFS" of="$FIRMWARE_ROOTFS.jffs2.tmp" &> /dev/null || exit 1
     jffs2_copy $FIRMWARE_ROOTFS.jffs2.tmp $FIRMWARE_ROOTFS_DESTDIR
     rm -rf $FIRMWARE_ROOTFS.jffs2.tmp
