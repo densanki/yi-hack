@@ -51,9 +51,12 @@ echo "Cleaning src/*/_install folders..."
 rm -r $BASE_DIR/src/busybox/_install
 rm -r $BASE_DIR/src/dropbear/_install
 rm -r $BASE_DIR/src/ftpd/_install
+rm -r $BASE_DIR/src/libfuse/_install
+rm -r $BASE_DIR/src/mosquitto/_install
 rm -r $BASE_DIR/src/proxychains-ng/_install
 rm -r $BASE_DIR/src/static/_install
 rm -r $BASE_DIR/src/uClibc/_install
+rm -r $BASE_DIR/src/uClibc++/_install
 rm -r $BASE_DIR/src/www/_install
 
 echo ""
