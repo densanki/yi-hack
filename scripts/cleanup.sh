@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#
 #  This file is part of yi-hack (https://github.com/densanki/yi-hack).
-#  Copyright (c) 2018-2019 Davide Maggioni.
+#  Copyright (c) 2019 densanki.
+#  Copyright (c) 2019 Davide Maggioni.
 #
 #  This program is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
@@ -40,11 +40,14 @@ STATIC_DIR=$BASE_DIR/static
 BUILD_DIR=$BASE_DIR/build
 OUT_DIR=$BASE_DIR/out
 
+echo "Cleaning sysroot..."
 cd $SYSROOT_DIR
 rm -r yi_*
+echo "Cleaning out dir..."
 cd $OUT_DIR
 rm -r yi_*
 
+echo "Cleaning src/*/_install folders..."
 rm -r $BASE_DIR/src/busybox/_install
 rm -r $BASE_DIR/src/dropbear/_install
 rm -r $BASE_DIR/src/ftpd/_install
@@ -52,3 +55,7 @@ rm -r $BASE_DIR/src/proxychains-ng/_install
 rm -r $BASE_DIR/src/static/_install
 rm -r $BASE_DIR/src/uClibc/_install
 rm -r $BASE_DIR/src/www/_install
+
+echo ""
+echo "Finished!"
+echo ""

@@ -56,11 +56,14 @@ if [[ -z $HACK_NEW_VERSION ]] ; then
     echo " hasn't contacted the server yet."
     echo " -----------------------------------------------------"
 else
-    if [[ $HACK_VERSION != $HACK_NEW_VERSION ]] ; then
-        echo " UPDATE: Version $HACK_NEW_VERSION is available."
+    if [[ $HACK_NEW_VERSION == "yes" ]] ; then
+        echo " UPDATE: A new version is available."
         echo ""
         echo " You can download it from GitHub:"
         echo " > https://github.com/densanki/yi-hack/releases"
+        echo " -----------------------------------------------------"
+    elif [[ $HACK_NEW_VERSION == "no_currentversionisbeta" ]] ; then
+        echo " WARNING: You are using an early-access version."
         echo " -----------------------------------------------------"
     fi
 fi
