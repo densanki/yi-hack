@@ -23,6 +23,12 @@ elif [ -d "/home/yi-hack" ]; then
 fi
 
 ulimit -s 1024
+
+# Load hostname from sd when present
+if [ -f "/tmp/sd/yi-hack/hostname" ]; then
+    cat /tmp/sd/yi-hack/hostname > /etc/hostname
+fi
+
 hostname -F /etc/hostname
 
 if [[ $(get_config HTTPD) == "yes" ]] ; then
